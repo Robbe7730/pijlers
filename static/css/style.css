@@ -26,3 +26,15 @@
   font-size: calc(1.5rem / 1.5);
   line-height: 1.5rem;
 }
+
+.progress-marker {
+  background-color: red;
+  width: 3px;
+  height: 100%;
+  align: left;
+  position: absolute;
+  top: 0;
+  font-size: calc(1rem / 1.5);
+  line-height: 1rem;
+  font-weight: bold;
+}

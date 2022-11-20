@@ -19,6 +19,7 @@ class Pijler(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     score = db.Column(db.Integer, nullable=False)
+    required_score = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
         return f"<Pijler {self.id}> {self.name}: {self.score}"

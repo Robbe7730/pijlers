@@ -1,21 +1,35 @@
-
 <!DOCTYPE html>
 <html>
     <head>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <title>Jonge Heldendag 2019</title>
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma.css') }}">
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ url_for('static', filename='css/bulma.css') }}"
+      >
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ url_for('static', filename='css/style.css') }}"
+      >
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     </head>
 
     <body class="has-navbar-fixed-top">
-      <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
+      <nav
+        class="navbar is-fixed-top is-light"
+        role="navigation"
+        aria-label="main navigation"
+      >
         <div class="navbar-brand">
           <a class="navbar-item">
-            <img src="{{ url_for('static', filename='jonge helden.png') }}" alt="Jonge Helden"/>
+            <img
+              src="{{ url_for('static', filename='jonge helden.png') }}"
+              alt="Jonge Helden"
+            />
           </a>
         </div>
       </nav>
@@ -33,6 +47,10 @@
                 max="{{max_score}}">
               </progress>
               <p class="progress-value has-text-white">{{pijler.name}}</p>
+              <div
+                class="progress-marker"
+                style="left: {{pijler.required_score * 100 / max_score}}%"
+              ></div>
             </div>
           {% endfor %}
         </section>
