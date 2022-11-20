@@ -34,26 +34,12 @@
         </div>
       </nav>
 
-      <div class="columns">
-        <section class="column section">
-          <h1 class="title">
-            Pijlers
-          </h1>
-          {% for pijler in pijlers %}
-            <div class="progress-wrapper">
-              <progress
-                class="progress is-medium"
-                value="{{pijler.score}}"
-                max="{{max_score}}">
-              </progress>
-              <p class="progress-value has-text-white">{{pijler.name}}</p>
-              <div
-                class="progress-marker"
-                style="left: {{pijler.required_score * 100 / max_score}}%"
-              ></div>
-            </div>
-          {% endfor %}
-        </section>
-      </div>
+      {% for pijler in pijlers %}
+        <form action="/delta/{{pijler.id}}" method="POST">
+          <h1 class="title"> {{pijler.name}}: {{pijler.score}} </h1>
+          <input type="number" id="delta" name="delta" class="input" value="0">
+          <input type="submit" class="button is-light" value=">">
+        </form>
+      {% endfor %}
     </body>
 </html>

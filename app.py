@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
@@ -43,6 +43,33 @@ def root():
     pijlers = Pijler.query.all()
     max_score = get_max_score()
     return render_template("index.html", pijlers=pijlers, max_score=max_score)
+
+@app.route("/controls")
+def controls():
+    pijlers = Pijler.query.all()
+    return render_template("controls.html", pijlers=pijlers)
+
+@app.route("/delta/<pijler_id>", methods=["POST"])
+def delta_pijler(pijler_id):
+    pijler = Pijler.query.get(pijler_id)
+
+    if not pijler:
+        return "No such Pijler", 404
+
+    delta = request.form.get("delta")
+
+    try:
+        delta = int(delta, 10)
+    except:
+        delta = None
+
+    if not delta:
+        return "Invalid delta", 400
+
+    pijler.score += delta
+    db.session.add(pijler)
+    db.session.commit()
+    return redirect(url_for("controls"))
 
 if __name__ == "__main__":
     with app.app_context():
