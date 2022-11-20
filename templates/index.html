@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <title>Jonge Heldendag 2019</title>
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bulma.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    </head>
+
+    <body class="has-navbar-fixed-top">
+      <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <img src="{{ url_for('static', filename='jonge helden.png') }}" alt="Jonge Helden"/>
+          </a>
+        </div>
+      </nav>
+
+      <div class="columns">
+        <section class="column section">
+          <h1 class="title">
+            Pijlers
+          </h1>
+          {% for pijler in pijlers %}
+            <div class="progress-wrapper">
+              <progress
+                class="progress is-medium"
+                value="{{pijler.score}}"
+                max="{{max_score}}">
+              </progress>
+              <p class="progress-value has-text-white">{{pijler.name}}</p>
+            </div>
+          {% endfor %}
+        </section>
+      </div>
+    </body>
+</html>
